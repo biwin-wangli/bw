@@ -1,0 +1,55 @@
+application:
+  message: Hello, BiWin
+
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 80
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  mvc:
+    view:
+      prefix: /bw/sys/jsp/
+      suffix: .jsp
+
+  freemarker:
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    settings:
+      tag_syntax: auto_detect
+      locale: zh_CN
+      default_encoding: UTF-8
+      output_encoding: UTF-8
+      template_update_delay: 0
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      number_format: 0.######
+      localized_lookup: false
+      whitespace_stripping: true
+      cache_storage: strong:200, soft:250
+      auto_import: bw/sys/ftl/index.ftl as bw
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  config-location: classpath:mybatis.xml
